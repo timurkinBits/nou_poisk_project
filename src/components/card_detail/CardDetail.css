@@ -1,0 +1,26 @@
+.card-detail {
+    display: flex;
+    gap: 16px;
+    font-size: 16pt;
+}
+
+.card-image {
+    background-color: gray;
+    width: 250px;
+    height: 250px;
+}
+
+.card-header {
+    font-size: 32pt;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-work-data {
+    display: flex;
+    gap: 4px;
+}
+
+.card-data {
+    width: 100%;
+}

@@ -1,0 +1,143 @@
+import { useEffect, useState } from "react";
+import { VpsApi } from "../api/vpsApi";
+import './Children.css';
+import CardPerson from "../components/card/Card";
+import Layout from "../components/layouts/layout";
+import SortingButtons from "../components/sorting/SortingButtons.jsx";
+import { useNavigate } from "react-router-dom";
+
+export const Vps = () => {
+    const [vpsList, setVpsList] = useState(null);
+    const [sortedVps, setSortedVps] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [currentSort, setCurrentSort] = useState('name');
+    const [isReversed, setIsReversed] = useState(false);
+
+    const navigate = useNavigate();
+    
+    const handleClick = (id) => {
+        navigate(`/VPS/${id}`);
+    };
+
+    // Функция для получения возраста из даты рождения
+    const getAge = (birthDate) => {
+        if (!birthDate) return 0;
+        const birth = new Date(birthDate);
+        const today = new Date();
+        let age = today.getFullYear() - birth.getFullYear();
+        const monthDiff = today.getMonth() - birth.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+            age--;
+        }
+        return age;
+    };
+
+    // Функция для получения числового значения позиции/ранга
+    const getPositionNumber = (position) => {
+        if (!position) return 0;
+        const match = position.toString().match(/\d+/);
+        return match ? parseInt(match[0]) : 0;
+    };
+
+    // Функция сортировки
+    const sortVps = (vps, sortType, reversed) => {
+        if (!vps) return null;
+
+        const sorted = [...vps].sort((a, b) => {
+            let comparison = 0;
+
+            switch (sortType) {
+                case 'name':
+                    const fullNameA = `${a.surname || ''} ${a.name} ${a.fathersname}`.toLowerCase().trim();
+                    const fullNameB = `${b.surname || ''} ${b.name} ${b.fathersname}`.toLowerCase().trim();
+                    comparison = fullNameA.localeCompare(fullNameB, 'ru');
+                    break;
+
+                case 'age':
+                    const ageA = getAge(a.birthDate || a.birth_date);
+                    const ageB = getAge(b.birthDate || b.birth_date);
+                    comparison = ageA - ageB;
+                    break;
+
+                case 'grade':
+                    // Для VPS может быть позиция или ранг
+                    const positionA = getPositionNumber(a.position || a.rank || 0);
+                    const positionB = getPositionNumber(b.position || b.rank || 0);
+                    comparison = positionA - positionB;
+                    break;
+
+                default:
+                    return 0;
+            }
+
+            return reversed ? -comparison : comparison;
+        });
+
+        return sorted;
+    };
+
+    // Обработчик изменения сортировки
+    const handleSortChange = (sortType, reversed) => {
+        setCurrentSort(sortType);
+        setIsReversed(reversed);
+        
+        const sorted = sortVps(vpsList, sortType, reversed);
+        setSortedVps(sorted);
+    };
+
+    useEffect(() => {
+        const fetchGet = async () => {
+            try {
+                const data = await VpsApi.getVps();
+                setVpsList(data);
+                // Применяем сортировку по умолчанию
+                const sorted = sortVps(data, currentSort, isReversed);
+                setSortedVps(sorted);
+            } catch (error) {
+                console.error("Всё сломалось!!!!", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchGet();
+    }, []); // Убрал зависимости из useEffect, так как они отсутствовали в оригинале
+
+    // Пересортировка при изменении исходных данных
+    useEffect(() => {
+        if (vpsList) {
+            const sorted = sortVps(vpsList, currentSort, isReversed);
+            setSortedVps(sorted);
+        }
+    }, [vpsList, currentSort, isReversed]);
+
+    if (loading) return (<p>Загрузка</p>);
+
+    return (
+        <Layout onMenuClick={(path) => navigate(path)}>
+            <SortingButtons
+                onSortChange={handleSortChange}
+                currentSort={currentSort}
+                isReversed={isReversed}
+                showAgeSort={true}
+            />
+            
+            <div className="children-parent">
+                {sortedVps?.map((item) => {
+                    const age = getAge(item.birthDate || item.birth_date);
+                    const subtitle = item.position || item.rank || 'ВПС';
+                    
+                    return (
+                        <CardPerson 
+                            key={item.id} 
+                            title={`${item.surname || ''} ${item.name} ${item.fathersname}`.trim()}
+                            subtitle={subtitle}
+                            text={age > 0 ? `Возраст: ${age}` : ""}
+                            onClick={() => handleClick(item.id)}
+                        />
+                    );
+                })}
+            </div>
+        </Layout>
+    );
+};

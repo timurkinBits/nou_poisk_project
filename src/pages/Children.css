@@ -1,0 +1,10 @@
+.children-parent {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.children-parent * {
+    flex-grow: 1;
+}
