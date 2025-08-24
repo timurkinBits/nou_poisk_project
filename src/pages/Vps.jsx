@@ -110,22 +110,20 @@ export const Vps = () => {
                 showGradeSort={false} // Скрываем кнопку сортировки по классу для VPS
             />
             
-            <div className="children-parent">
+            <FancyCursorBorders className="children-parent">
                 {sortedVps?.map((item) => {
                     const age = getAge(item.birthDate || item.birth_date);
-                    const subtitle = item.position || item.rank || 'ВПС';
                     
                     return (
                         <CardPerson 
                             key={item.id} 
                             title={`${item.surname || ''} ${item.name} ${item.fathersname}`.trim()}
-                            subtitle={subtitle}
                             text={age > 0 ? `Возраст: ${age}` : ""}
                             onClick={() => handleClick(item.id)}
                         />
                     );
                 })}
-            </div>
+            </FancyCursorBorders>
         </Layout>
     );
 };
