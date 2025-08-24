@@ -13,7 +13,7 @@ export const FancyCursorBorders = ({ children, className }) => {
     const elem = el.current;
 
     // mousedown, mouseup, mousemove, dblclick, click, contextmenu, keydown, keyup..
-    elem.addEventListener("mousemove", e => {
+    window.addEventListener("mousemove", e => {
       mouseX = e.pageX
       mouseY = e.pageY
       elem?.childNodes?.forEach(child => {

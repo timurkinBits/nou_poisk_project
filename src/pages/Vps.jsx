@@ -33,13 +33,6 @@ export const Vps = () => {
         return age;
     };
 
-    // Функция для получения числового значения позиции/ранга
-    const getPositionNumber = (position) => {
-        if (!position) return 0;
-        const match = position.toString().match(/\d+/);
-        return match ? parseInt(match[0]) : 0;
-    };
-
     // Функция сортировки
     const sortVps = (vps, sortType, reversed) => {
         if (!vps) return null;
@@ -103,13 +96,14 @@ export const Vps = () => {
 
     return (
         <Layout onMenuClick={(path) => navigate(path)}>
+            <FancyCursorBorders>
             <SortingButtons
                 onSortChange={handleSortChange}
                 currentSort={currentSort}
                 isReversed={isReversed}
                 showGradeSort={false} // Скрываем кнопку сортировки по классу для VPS
             />
-            
+            </FancyCursorBorders>
             <FancyCursorBorders className="children-parent">
                 {sortedVps?.map((item) => {
                     const age = getAge(item.birthDate || item.birth_date);
