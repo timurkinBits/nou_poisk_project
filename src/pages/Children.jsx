@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/layouts/layout.jsx";
 import SortingButtons from "../components/sorting/SortingButtons.jsx";
 import "./Children.css";
+import { FancyCursorBorders } from "../components/FancyCursorBorders/FancyCursorBorders.jsx";
 
 export default function Children() {
   const [childrenList, setChildrenList] = useState(null);
@@ -51,12 +52,6 @@ export default function Children() {
           const fullNameA = `${a.surname} ${a.name} ${a.fathersname}`.toLowerCase();
           const fullNameB = `${b.surname} ${b.name} ${b.fathersname}`.toLowerCase();
           comparison = fullNameA.localeCompare(fullNameB, 'ru');
-          break;
-
-        case 'age':
-          const ageA = getAge(a.birthDate || a.birth_date);
-          const ageB = getAge(b.birthDate || b.birth_date);
-          comparison = ageA - ageB;
           break;
 
         case 'grade':
@@ -114,6 +109,7 @@ export default function Children() {
 
   return (
     <Layout onMenuClick={(path) => navigate(path)}>
+      <FancyCursorBorders people={childrenList}>
       <SortingButtons
         onSortChange={handleSortChange}
         currentSort={currentSort}
@@ -132,6 +128,7 @@ export default function Children() {
           />
         ))}
       </div>
+      </FancyCursorBorders>
     </Layout>
   );
 }

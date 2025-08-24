@@ -5,6 +5,7 @@ import CardPerson from "../components/card/Card";
 import Layout from "../components/layouts/layout";
 import SortingButtons from "../components/sorting/SortingButtons.jsx";
 import { useNavigate } from "react-router-dom";
+import { FancyCursorBorders } from "../components/FancyCursorBorders/FancyCursorBorders.jsx";
 
 export const Vps = () => {
     const [vpsList, setVpsList] = useState(null);
@@ -51,19 +52,6 @@ export const Vps = () => {
                     const fullNameA = `${a.surname || ''} ${a.name} ${a.fathersname}`.toLowerCase().trim();
                     const fullNameB = `${b.surname || ''} ${b.name} ${b.fathersname}`.toLowerCase().trim();
                     comparison = fullNameA.localeCompare(fullNameB, 'ru');
-                    break;
-
-                case 'age':
-                    const ageA = getAge(a.birthDate || a.birth_date);
-                    const ageB = getAge(b.birthDate || b.birth_date);
-                    comparison = ageA - ageB;
-                    break;
-
-                case 'grade':
-                    // Для VPS может быть позиция или ранг
-                    const positionA = getPositionNumber(a.position || a.rank || 0);
-                    const positionB = getPositionNumber(b.position || b.rank || 0);
-                    comparison = positionA - positionB;
                     break;
 
                 default:
@@ -115,11 +103,11 @@ export const Vps = () => {
 
     return (
         <Layout onMenuClick={(path) => navigate(path)}>
+            <FancyCursorBorders people={vpsList}>
             <SortingButtons
                 onSortChange={handleSortChange}
                 currentSort={currentSort}
                 isReversed={isReversed}
-                showAgeSort={true}
                 showGradeSort={false} // Скрываем кнопку сортировки по классу для VPS
             />
             
@@ -139,6 +127,7 @@ export const Vps = () => {
                     );
                 })}
             </div>
+            </FancyCursorBorders>
         </Layout>
     );
 };
