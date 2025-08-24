@@ -26,8 +26,6 @@ const SortingButtons = ({
 
   return (
     <div className="sorting-container">
-      <h3 className="sorting-title">Сортировка</h3>
-      
       <div className="sorting-buttons">
         <div className="button-group">
           <button
