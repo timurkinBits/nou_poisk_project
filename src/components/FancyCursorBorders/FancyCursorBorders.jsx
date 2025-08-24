@@ -1,4 +1,3 @@
- jsx
 import { useRef, useEffect } from "react";
 import"./FancyCursorBorders.css"
 

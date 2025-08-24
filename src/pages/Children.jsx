@@ -109,7 +109,6 @@ export default function Children() {
 
   return (
     <Layout onMenuClick={(path) => navigate(path)}>
-      <FancyCursorBorders people={childrenList}>
       <SortingButtons
         onSortChange={handleSortChange}
         currentSort={currentSort}
@@ -128,7 +127,6 @@ export default function Children() {
           />
         ))}
       </div>
-      </FancyCursorBorders>
     </Layout>
   );
 }

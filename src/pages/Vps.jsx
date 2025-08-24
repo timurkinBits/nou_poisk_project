@@ -103,7 +103,6 @@ export const Vps = () => {
 
     return (
         <Layout onMenuClick={(path) => navigate(path)}>
-            <FancyCursorBorders people={vpsList}>
             <SortingButtons
                 onSortChange={handleSortChange}
                 currentSort={currentSort}
@@ -127,7 +126,6 @@ export const Vps = () => {
                     );
                 })}
             </div>
-            </FancyCursorBorders>
         </Layout>
     );
 };
