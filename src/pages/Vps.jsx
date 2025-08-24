@@ -120,6 +120,7 @@ export const Vps = () => {
                 currentSort={currentSort}
                 isReversed={isReversed}
                 showAgeSort={true}
+                showGradeSort={false} // Скрываем кнопку сортировки по классу для VPS
             />
             
             <div className="children-parent">

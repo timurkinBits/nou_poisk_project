@@ -4,6 +4,7 @@ const SortingButtons = ({
   onSortChange, 
   currentSort = 'name', 
   isReversed = false,
+  showGradeSort = true, // Новый пропс для управления отображением кнопки сортировки по классу
 }) => {
   const handleSortClick = (sortType) => {
     if (currentSort === sortType) {
@@ -36,12 +37,14 @@ const SortingButtons = ({
             {getSortLabel('name')}
           </button>
 
-          <button
-            className={`sort-button ${currentSort === 'grade' ? 'active' : ''}`}
-            onClick={() => handleSortClick('grade')}
-          >
-            {getSortLabel('grade')}
-          </button>
+          {showGradeSort && (
+            <button
+              className={`sort-button ${currentSort === 'grade' ? 'active' : ''}`}
+              onClick={() => handleSortClick('grade')}
+            >
+              {getSortLabel('grade')}
+            </button>
+          )}
         </div>
 
         <button
