@@ -116,7 +116,7 @@ export default function Children() {
         showAgeSort={true}
       />
       
-      <div className="children-parent">
+      <FancyCursorBorders className="children-parent">
         {sortedChildren?.map((item) => (
           <CardPerson
             key={item.id}
@@ -126,7 +126,7 @@ export default function Children() {
             onClick={() => handleClick(item.id)}
           />
         ))}
-      </div>
+      </FancyCursorBorders>
     </Layout>
   );
 }
