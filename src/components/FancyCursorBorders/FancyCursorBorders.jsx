@@ -1,7 +1,8 @@
+ jsx
 import { useRef, useEffect } from "react";
 import"./FancyCursorBorders.css"
 
-export const FancyCursorBorders = ({ people }) => {
+export const FancyCursorBorders = ({ children, className }) => {
   const el = useRef(null)
 
   useEffect(() => {
@@ -16,16 +17,16 @@ export const FancyCursorBorders = ({ people }) => {
     elem.addEventListener("mousemove", e => {
       mouseX = e.pageX
       mouseY = e.pageY
-      elem?.personNodes?.forEach(person => {
-        person.style.setProperty("--mouse-x", `${mouseX - person.offsetLeft}px`)
-        person.style.setProperty("--mouse-y", `${mouseY - person.offsetTop}px`)
+      elem?.childNodes?.forEach(child => {
+        child.style.setProperty("--mouse-x", `${mouseX - child.offsetLeft}px`)
+        child.style.setProperty("--mouse-y", `${mouseY - child.offsetTop}px`)
       })
     })
 
     window.addEventListener("scroll", () => {
-      elem?.personNodes?.forEach(person => {
-        person.style.setProperty("--mouse-x", `${mouseX - person.offsetLeft}px`)
-        person.style.setProperty("--mouse-y", `${mouseY - person.offsetTop}px`)
+      elem?.childNodes?.forEach(child => {
+        child.style.setProperty("--mouse-x", `${mouseX - child.offsetLeft}px`)
+        child.style.setProperty("--mouse-y", `${mouseY - child.offsetTop}px`)
       })
     })
   }, [el])
@@ -33,9 +34,9 @@ export const FancyCursorBorders = ({ people }) => {
   return (
     <div
       ref={el}
-      className={`background`}
+      className={`background ${className}`}
     >
-        {people}
+        {children}
     </div>
   );
 };
