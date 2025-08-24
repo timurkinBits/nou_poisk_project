@@ -1,0 +1,15 @@
+.my-cool-button {
+    margin: 0.5em;
+    padding: 0.4em 0.7em;
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 4px grey;
+
+    transition: all, 0.25;
+}
+
+.my-cool-button:hover {
+    background-color: whitesmoke;
+    box-shadow: 2px 0 4px grey;
+}
