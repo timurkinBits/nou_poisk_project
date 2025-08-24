@@ -96,25 +96,22 @@ export const Vps = () => {
 
     return (
         <Layout onMenuClick={(path) => navigate(path)}>
-            <FancyCursorBorders>
             <SortingButtons
                 onSortChange={handleSortChange}
                 currentSort={currentSort}
                 isReversed={isReversed}
                 showGradeSort={false} // Скрываем кнопку сортировки по классу для VPS
             />
-            </FancyCursorBorders>
-            <FancyCursorBorders className="children-parent">
+        <FancyCursorBorders className="children-parent">
                 {sortedVps?.map((item) => {
                     const age = getAge(item.birthDate || item.birth_date);
-                    
+
                     return (
-                        <CardPerson 
-                            key={item.id} 
+                        <CardPerson
+                            key={item.id}
                             title={`${item.surname || ''} ${item.name} ${item.fathersname}`.trim()}
                             text={age > 0 ? `Возраст: ${age}` : ""}
-                            onClick={() => handleClick(item.id)}
-                        />
+                            onClick={() => handleClick(item.id)} />
                     );
                 })}
             </FancyCursorBorders>
