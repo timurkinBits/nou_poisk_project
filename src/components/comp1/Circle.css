@@ -1,12 +1,13 @@
 .cursor-follower {
   position: fixed;
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, #61dafb 0%, rgba(97, 218, 251, 0.3) 70%);
+  width: 20px;
+  height: 20px;
+  /* background: radial-gradient(circle, #000 0%, rgb(255, 255, 255) 70%); */
+  background: color(srgb 255 255 255)
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+  transition: transform 10s ease;
   mix-blend-mode: difference;
 }
