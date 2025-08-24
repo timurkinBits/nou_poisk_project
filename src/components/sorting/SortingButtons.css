@@ -82,7 +82,7 @@
 }
 
 .reverse-button {
-  background: var(--button-bg);
+  /* background: var(--button-bg); */
   border: 2px solid var(--button-active);
   border-radius: 50%;
   width: 44px;
@@ -91,18 +91,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  color: var(--button-active);
   box-sizing: border-box;
 }
 
 .reverse-button:hover {
   background: var(--button-bg-hover);
-  color: white;
-}
-
-.reverse-button.active {
-  background: var(--button-active);
   color: white;
 }
 
