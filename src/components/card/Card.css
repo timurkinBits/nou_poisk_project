@@ -1,4 +1,4 @@
-.card { 
+.card {
   cursor: pointer;
   width: 100%;
   border: 1px solid var(--card-border, #eee);
@@ -12,10 +12,29 @@
   transition: all 0.3s ease;
 }
 
+/* Принудительное применение темной темы для карточек */
+:root[data-theme='dark'] .card,
+html[data-theme='dark'] .card,
+body[data-theme='dark'] .card,
+[data-theme='dark'] .card {
+  background-color: #253d54 !important;
+  border-color: #1e3a5f !important;
+  color: #e6f1ff !important;
+}
+
+:root[data-theme='dark'] .card:hover,
+html[data-theme='dark'] .card:hover,
+body[data-theme='dark'] .card:hover,
+[data-theme='dark'] .card:hover {
+  background-color: #1a2b3d !important;
+  border-color: #5aa6cc !important;
+  box-shadow: 0 4px 20px rgba(90, 182, 204, 0.2) !important;
+}
+
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  background-color: var(--card-hover-background, #ddd);
+  box-shadow: var(--card-hover-shadow, 0 4px 8px rgba(0, 0, 0, 0.15));
+  background-color: var(--card-hover-background, #f5f5f5);
   border-color: var(--card-hover-border, #ccc);
 }
 
@@ -45,6 +64,22 @@
   font-size: 1.25rem;
   color: var(--card-title-color, #333);
   transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+/* Принудительные стили для темной темы */
+:root[data-theme='dark'] .card-title,
+html[data-theme='dark'] .card-title,
+body[data-theme='dark'] .card-title,
+[data-theme='dark'] .card-title {
+  color: #e6f1ff !important;
+}
+
+:root[data-theme='dark'] .card:hover .card-title,
+html[data-theme='dark'] .card:hover .card-title,
+body[data-theme='dark'] .card:hover .card-title,
+[data-theme='dark'] .card:hover .card-title {
+  color: #ffffff !important;
 }
 
 .card-subtitle {
@@ -55,12 +90,40 @@
   transition: color 0.3s ease;
 }
 
+:root[data-theme='dark'] .card-subtitle,
+html[data-theme='dark'] .card-subtitle,
+body[data-theme='dark'] .card-subtitle,
+[data-theme='dark'] .card-subtitle {
+  color: #a8b2d1 !important;
+}
+
+:root[data-theme='dark'] .card:hover .card-subtitle,
+html[data-theme='dark'] .card:hover .card-subtitle,
+body[data-theme='dark'] .card:hover .card-subtitle,
+[data-theme='dark'] .card:hover .card-subtitle {
+  color: #ccd6f6 !important;
+}
+
 .card-text {
   margin: 0;
   font-size: 0.9rem;
   color: var(--card-text-color, #444);
   line-height: 1.4;
   transition: color 0.3s ease;
+}
+
+:root[data-theme='dark'] .card-text,
+html[data-theme='dark'] .card-text,
+body[data-theme='dark'] .card-text,
+[data-theme='dark'] .card-text {
+  color: #a8b2d1 !important;
+}
+
+:root[data-theme='dark'] .card:hover .card-text,
+html[data-theme='dark'] .card:hover .card-text,
+body[data-theme='dark'] .card:hover .card-text,
+[data-theme='dark'] .card:hover .card-text {
+  color: #ccd6f6 !important;
 }
 
 .card:hover .card-title {
@@ -77,28 +140,30 @@
 
 /* Светлая тема */
 [data-theme='light'] {
-  --card-background: #fff;
-  --card-hover-background: #eee;
-  --card-border: #ddd;
-  --card-hover-border: #ccc;
-  --card-title-color: #333;
-  --card-hover-title-color: #222;
-  --card-subtitle-color: #666;
-  --card-hover-subtitle-color: #555;
-  --card-text-color: #444;
-  --card-hover-text-color: #333;
+  --card-background: #ffffff;
+  --card-hover-background: #f8f9fa;
+  --card-border: #e1e5e9;
+  --card-hover-border: #c1c7cd;
+  --card-title-color: #2c3e50;
+  --card-hover-title-color: #1a252f;
+  --card-subtitle-color: #6c757d;
+  --card-hover-subtitle-color: #495057;
+  --card-text-color: #495057;
+  --card-hover-text-color: #2c3e50;
+  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Тёмная тема */
+/* Темная тема */
 [data-theme='dark'] {
-  --card-background: rgb(37, 61, 84);
-  --card-hover-background: rgb(45, 70, 95);
-  --card-border: rgb(90, 182, 204);
-  --card-hover-border: rgb(80, 162, 184);
-  --card-title-color: rgb(90, 182, 204);
-  --card-hover-title-color: rgb(100, 192, 214);
-  --card-subtitle-color: rgb(120, 200, 220);
-  --card-hover-subtitle-color: rgb(130, 210, 230);
-  --card-text-color: rgb(150, 210, 225);
-  --card-hover-text-color: rgb(160, 220, 235);
+  --card-background: #253d54; /* Темно-синий по умолчанию */
+  --card-hover-background: #1a2b3d; /* Еще темнее при наведении */
+  --card-border: #1e3a5f;
+  --card-hover-border: #5aa6cc;
+  --card-title-color: #e6f1ff;
+  --card-hover-title-color: #ffffff;
+  --card-subtitle-color: #a8b2d1;
+  --card-hover-subtitle-color: #ccd6f6;
+  --card-text-color: #a8b2d1;
+  --card-hover-text-color: #ccd6f6;
+  --card-hover-shadow: 0 4px 20px rgba(90, 182, 204, 0.2);
 }

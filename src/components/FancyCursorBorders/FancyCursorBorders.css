@@ -14,10 +14,40 @@
   inset: 0;
   padding: 2px;
   border-radius: 8px;
-  background: radial-gradient(circle 180px at var(--mouse-x) var(--mouse-y),
-  black 0%, whitesmoke 100%);
+  background: radial-gradient(
+    circle 180px at var(--mouse-x) var(--mouse-y),
+    var(--cursor-border-center, rgba(0, 0, 0, 0.8)) 0%, 
+    var(--cursor-border-edge, rgba(245, 245, 245, 0.1)) 100%
+  );
   mask: 
     conic-gradient(#000 0 0) content-box, 
     conic-gradient(#000 0 0);
   mask-composite: exclude;
+  opacity: var(--cursor-border-opacity, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+.background:hover > *::before {
+  opacity: var(--cursor-border-hover-opacity, 1);
+}
+
+/* Светлая тема */
+[data-theme='light'] {
+  --cursor-border-center: rgba(37, 89, 88, 0.8);
+  --cursor-border-edge: rgba(44, 191, 170, 0.1);
+  --cursor-border-opacity: 0.6;
+  --cursor-border-hover-opacity: 0.9;
+}
+
+/* Темная тема */
+[data-theme='dark'] {
+  --cursor-border-center: rgba(90, 182, 204, 0.9);
+  --cursor-border-edge: rgba(230, 241, 255, 0.1);
+  --cursor-border-opacity: 0.7;
+  --cursor-border-hover-opacity: 1;
+}
+
+/* Дополнительный эффект для темной темы */
+[data-theme='dark'] .background > *::before {
+  box-shadow: 0 0 20px rgba(90, 182, 204, 0.1);
 }
