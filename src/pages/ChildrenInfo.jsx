@@ -4,6 +4,7 @@ import { ChildrenApi } from "../api/childApi"
 import { useParams } from "react-router-dom"
 import './Info.css'
 import { CardDetail } from "../components/card_detail/CardDetail"
+import photo from "../photo.jpg"
 
 export const ChildrenInfo = () => {
     const {id} = useParams()
@@ -26,6 +27,6 @@ export const ChildrenInfo = () => {
     return <Layout>Загрузка...</Layout>
     }
 
-    return <Layout><CardDetail name={child.name} surname={child.surname} fathername={child.fathersname} birthdate={child.birthdate} 
+    return <Layout><CardDetail imageUrl={photo} name={child.name} surname={child.surname} fathername={child.fathersname} birthdate={child.birthdate} 
     workingPlace={child.study_place} grade={child.grade}/></Layout>
 }
