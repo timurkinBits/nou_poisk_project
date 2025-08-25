@@ -114,7 +114,8 @@ export const Vps = () => {
                             key={item.id}
                             title={`${item.surname || ''} ${item.name} ${item.fathersname}`.trim()}
                             text={age > 0 ? `Возраст: ${age}` : ""}
-                            onClick={() => handleClick(item.id)} />
+                            onClick={() => handleClick(item.id)}
+                            subtitle={item.role} />
                     );
                 })}
             </FancyCursorBorders>
