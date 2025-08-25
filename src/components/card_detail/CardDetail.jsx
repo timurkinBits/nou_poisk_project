@@ -3,7 +3,7 @@ import './CardDetail.css'
 export const CardDetail = ({name, surname, fathername, birthdate, imageUrl, workingPlace, grade}) => {
     return (
     <div className='card-detail'>
-        <img src={imageUrl} alt="фото" width='250px' height='250px' className='card-image'/>
+        <img src={imageUrl} alt="фото" width='250px' height='250px' className='card-image' draggable="false"/>
         <div className='card-data'>
             <div>
                 <h1 className='card-header'>{surname}</h1>

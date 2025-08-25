@@ -95,6 +95,7 @@ export const Vps = () => {
     if (loading) return (<p>Загрузка</p>);
 
     return (
+        <FancyCursorBorders>
         <Layout onMenuClick={(path) => navigate(path)}>
             <FancyCursorBorders>
             <SortingButtons
@@ -118,5 +119,6 @@ export const Vps = () => {
                 })}
             </FancyCursorBorders>
         </Layout>
+        </FancyCursorBorders>
     );
 };

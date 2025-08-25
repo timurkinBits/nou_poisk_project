@@ -108,6 +108,7 @@ export default function Children() {
   if (loading) return <div>Загрузка...</div>;
 
   return (
+    <FancyCursorBorders>
     <Layout onMenuClick={(path) => navigate(path)}>
       <FancyCursorBorders >
       <SortingButtons
@@ -129,5 +130,6 @@ export default function Children() {
         ))}
         </FancyCursorBorders>
     </Layout>
+    </FancyCursorBorders>
   );
 }
