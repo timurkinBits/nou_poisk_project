@@ -117,7 +117,7 @@ export default function Children() {
         showAgeSort={true}
       />
       </FancyCursorBorders>
-      <FancyCursorBorders >
+      <FancyCursorBorders className="children-parent">
         {sortedChildren?.map((item) => (
           <CardPerson
             key={item.id}
