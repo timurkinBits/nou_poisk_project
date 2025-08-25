@@ -50,12 +50,8 @@ const SortingButtons = ({
           onClick={() => onSortChange(currentSort, !isReversed)}
           title={`Порядок: ${isReversed ? 'по убыванию' : 'по возрастанию'}`}
         >
-          <span className={`arrow ${isReversed ? 'reversed' : ''}`}>⇅</span>
+          <span className={`arrow ${isReversed ? 'reversed' : ''}`}>↑</span>
         </button>
-        
-        <span className="sort-order">
-          {isReversed ? 'По убыванию' : 'По возрастанию'}
-        </span>
       </div>
     </div>
   );

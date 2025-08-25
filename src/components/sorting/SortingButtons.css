@@ -104,10 +104,12 @@ color: white;
 font-size: 18px;
 transition: transform 0.3s ease;
 display: inline-block;
+margin-top: -4px; /* Поднимаем обычную стрелку на 2px */
 }
 
 .arrow.reversed {
 transform: rotate(180deg);
+margin-top: 6px; /* Опускаем перевернутую стрелку на 2px */
 }
 
 .sort-order {
