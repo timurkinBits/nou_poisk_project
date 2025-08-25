@@ -109,15 +109,12 @@ export default function Children() {
 
   return (
     <Layout onMenuClick={(path) => navigate(path)}>
-      <FancyCursorBorders >
       <SortingButtons
         onSortChange={handleSortChange}
         currentSort={currentSort}
         isReversed={isReversed}
         showAgeSort={true}
       />
-      </FancyCursorBorders>
-      <FancyCursorBorders className="children-parent">
         {sortedChildren?.map((item) => (
           <CardPerson
             key={item.id}
@@ -127,7 +124,6 @@ export default function Children() {
             onClick={() => handleClick(item.id)}
           />
         ))}
-      </FancyCursorBorders>
     </Layout>
   );
 }
