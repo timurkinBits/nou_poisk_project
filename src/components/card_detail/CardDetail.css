@@ -1,21 +1,63 @@
 .card-detail {
     display: flex;
-    gap: 16px;
+    gap: 24px;
     font-size: 16pt;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .card-image {
     background-color: gray;
     width: 330px;
-    height: 290px;
+    height: 330px;
+    flex-shrink: 0;
+    border-radius: 8px;
 }
 
 .card-header {
     font-size: 32pt;
-    margin: 0;
+    margin: 0; /* Убираем все отступы */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .card-data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 300px;
+    gap: 16px; /* Используем gap вместо margin */
+}
+
+/* Убираем все отступы у дочерних элементов */
+.card-data > * {
+    margin: 0;
     width: 100%;
+    max-width: 400px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .card-detail {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .card-image {
+        width: 280px;
+        height: 245px;
+    }
+    
+    .card-header {
+        font-size: 28pt;
+    }
 }
