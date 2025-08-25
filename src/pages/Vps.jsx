@@ -96,14 +96,14 @@ export const Vps = () => {
 
     return (
         <Layout onMenuClick={(path) => navigate(path)}>
-            {/* <FancyCursorBorders> */}
+            <FancyCursorBorders>
             <SortingButtons
                 onSortChange={handleSortChange}
                 currentSort={currentSort}
                 isReversed={isReversed}
                 showGradeSort={false} // Скрываем кнопку сортировки по классу для VPS
             />
-            {/* </FancyCursorBorders> */}
+            </FancyCursorBorders>
         <FancyCursorBorders className="children-parent">
                 {sortedVps?.map((item) => {
                     const age = getAge(item.birthDate || item.birth_date);
