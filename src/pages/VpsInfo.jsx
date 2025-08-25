@@ -4,6 +4,7 @@ import { VpsApi } from "../api/vpsApi"
 import { useParams } from "react-router-dom"
 import './Info.css'
 import { CardDetail } from "../components/card_detail/CardDetail"
+import photo from "../photo.jpg"
 
 export const VpsInfo = () => {
     const {id} = useParams()
@@ -26,6 +27,6 @@ export const VpsInfo = () => {
     return <Layout>Загрузка...</Layout>
     }
 
-    return <Layout><CardDetail name={vps.name} surname={vps.surname} fathername={vps.fathersname} birthdate={vps.birthdate} 
+    return <Layout><CardDetail imageUrl={photo} name={vps.name} surname={vps.surname} fathername={vps.fathersname} birthdate={vps.birthdate} 
     workingPlace={vps.study_place}/></Layout>
 }
